@@ -1,15 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
 
 * {
     box-sizing: border-box;
 }
+:root {
+    --line-border-fill: #3498db;
+    --line-border-empty: #e0e0e0;
+}
+
 body {
-    font-family: 'Roboto', sans-serif;
+    background-color: #f6f7fb;
+    font-family: 'Muli', sans-serif;
     margin: 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
     overflow: hidden;
+}
+
+.container {
+    text-align: center;
+}
+
+.progress-container {
+    display:flex;
+    justify-content: space-between;
+    max-width: 100%;
+    width: 350px;
+    margin-bottom: 30px;
+    position: relative;
+
+}
+
+.progress-container::before {
+        content: '';
+        background-color: var(--line-border-empty);
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        transform: translateY(-50%);
+        width: 100%;
+        height: 4px;
+        z-index: -1;
+    }
+
+.progress {
+    background-color: var(--line-border-fill);
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translateY(-50%);
+    width: 0%;
+    height: 4px;
+    z-index: -1;
+    transition: .3s ease;
+}
+
+.circle {
+    background-color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: #999;
+    border: 3px solid var(--line-border-empty);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+}
+.circle.active {
+    border-color: var(--line-border-fill);
+}
+
+.btn {
+    background-color: var(--line-border-fill);
+    color: #fff;
+    font-size: 16px;
+    font-family: inherit;
+    margin: 5px;
+    padding: 8px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn:focus {
+    outline-color: #999;
+}
+
+.btn:disabled {
+    background-color: var(--line-border-empty);
+    color: #999;
+    cursor: not-allowed;
 }
